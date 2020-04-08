@@ -811,6 +811,32 @@ int main()
     return 0;
 }
 */
+/*///luogu_p1102
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int main()
+{
+    long long n,m,t,cnt=0;
+    cin>>n>>m;
+    vector<long long>v,vv;
+    for(int i=1;i<=n;i++){
+        cin>>t;
+        v.push_back(t);
+    }
+    sort(v.begin(),v.end());
+    for(auto t:v)vv.push_back(t+m);
+    for(int m=0,t=0,temp=0;m<n;m++){
+        if(!(m&&v[m]==v[m-1]))temp=0;
+        while(vv[t]<v[m])t++;
+        while(vv[t]==v[m])temp++,t++;
+        cnt+=temp;
+    }
+    cout<<cnt;
+    return 0;
+}
+*/
 /*///luogu_improve_p1111
 const int maxn = 1000005;
 int p[1005], n, m, e, x, y,c,sum;
@@ -2325,6 +2351,29 @@ int n,t;
 		for (int z = 1; z <= a[5] / 9; z++)cout << 555555555;
 		for (int y = 1; y <= a[0]; y++)cout << 0;
 	}
+*/
+/*///luogu_p2249
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int main()
+{
+    int n,m,t;
+    cin>>n>>m;
+    vector<int>v;
+    for(int i=1;i<=n;i++){
+        cin>>t;
+        v.push_back(t);
+    }
+    for(int i=0;i<m;i++){
+        cin>>t;
+        if(i)cout<<' ';
+        // cout<<binSearch(v,t);
+        cout<<(binary_search(v.begin(),v.end(),t)?(lower_bound(v.begin(),v.end(),t)-v.begin()+1):-1);
+    }
+    return 0;
+}
 */
 /*///luogu_p2356
 int n, a[1001][1001],r0[1001],c0[1001],s,t;
