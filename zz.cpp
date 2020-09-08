@@ -2,7 +2,8 @@
 //oj.txt
 */
 //#include <bits/stdc++.h>
-#include "pch.h"
+// #include "pch.h"
+#include <bits/stdc++.h>
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -17,15 +18,16 @@
 #include <fstream>
 #include <sstream>
 #include <cassert>
-#include <ctype>
+// #include <ctype>
 #include <cstring>
 using namespace std;
 int main()
 {
-	int n,t;
-	cin >> n;
-	vector<int>a;
-	while (cin >> t)a.push_back(t);
+	map<int,int>m;
+    goto l;
+    m[2]=1;
+    l:
+    cout<<m[2];
 
 }
 /*
@@ -1736,7 +1738,7 @@ int n;
         cout<<a[n1]<<' '<<a[n2]<<' '<<a[n3];
         return 0;
     }
-/*
+*/
 /*luogu_populer_p1583
 typedef struct student{int n,w;}s;
 int cmp(s a,s b){if(a.w>b.w||(a.w==b.w&&a.n<b.n))return 1;else return 0;}
@@ -2105,9 +2107,9 @@ long m,n;
 /*///luogu_beginner_p1851
     map<int,int>a;
     for(int i=1;i<=20000;i++)for(int j=1;j<=i/2;j++)if(i%j==0)a[i]+=j;
-   for(int i=1;i<=20000;i++)if(i==a[a[i]]&&i!=a[i])cout<<"a["<<i<<"]="<<a[i]<<';'<<endl;
-   /TLE
-   map<int,int>a;
+    for(int i=1;i<=20000;i++)if(i==a[a[i]]&&i!=a[i])cout<<"a["<<i<<"]="<<a[i]<<';'<<endl;
+    /TLE
+    map<int,int>a;
     a[220]=284;
     a[284]=220;
     a[1184]=1210;
@@ -2128,6 +2130,7 @@ long m,n;
     cin>>s; 
     while(a[s]==0)s++;
     cout<<s<<' '<<a[s]; 
+*/
 /* ///luogu_beginner_p1865
 bool prime(int n);
 string turn(int n);
@@ -5719,13 +5722,10 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         int l=nums.size();
         vector<int> v;
-        for(int i=0;i<l;i++){
-            for(int j=i+1;j<l;j++){
-                if(nums[i]+nums[j]==target){
-                    v.push_back(i);v.push_back(j);
-                }
-            }
-        }
+        //for(int i=0;i<l;i++){for(int j=i+1;j<l;j++){if(nums[i]+nums[j]==target){v.push_back(i);v.push_back(j);break;}}}
+        map<int,int>m;
+        for(int i=0;i<l;i++)m[nums[i]]=i;
+        for(int i=0;i<l;i++){int t=m[target-nums[i]];if(t&&t>i){v.push_back(i);v.push_back(t);break;}}
         return v;
     }
 };
